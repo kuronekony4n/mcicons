@@ -3,7 +3,7 @@ const animeList = document.getElementById("resultContainer");
 
 const searchanime = async (searchBox) => {
     try {
-        const res = await fetch("/icons/icons.json");
+        const res = await fetch("icons/icons.json");
         if (!res.ok) {
             throw new Error(`Failed to fetch JSON: ${res.status} - ${res.statusText}`);
         }
