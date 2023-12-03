@@ -1,5 +1,5 @@
 body {
-    max-width: fit-content;
+    max-width: max-content;
     background-color: #1d1d1d;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -10,23 +10,20 @@ body {
     text-shadow: 2px 2px rgba(0, 0, 0, 0.1);
     background-color: #C6C6C6;
     border-radius: 25px;
-    border: 30px solid #000;
+    border: 20px solid #000;
     border-image-source: url('assets/ui.png');
     border-image-slice: 9;
     border-image-repeat: repeat;
-    box-sizing: border-box;
 }
 
 .crafting-section {
     text-shadow: 2px 2px rgba(0, 0, 0, 0.1);
     display: grid;
-    grid-template-columns: repeat(9, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
 }
 
 .inventory-item {
-    min-width: 64px;
     image-rendering: pixelated;
-    text-shadow: 2px 2px rgba(0, 0, 0, 0.1);
     background-color: #8B8B8B;
     border: 12px solid #000;
     border-image-source: url('assets/itemBg.png');
@@ -41,11 +38,12 @@ body {
 }
 
 .inventory-item img {
-    max-width: 64px;
+    max-width: 48px;
 }
 
 .textInput {
-    width: 200px;
+    display: block;
+    width: 100%;
     image-rendering: pixelated;
     outline: 0;
     background-color: #373737;
@@ -63,9 +61,19 @@ body {
 .credit {
     display: inline;
     color: #fff;
+    font-size: larger;
 }
 
 a {
     color: #c2acff;
     text-decoration: none;
+}
+
+p {
+    margin: 0px 0px 10px 0px;
+    color: #9e9e9e;
+}
+
+hr {
+    border-width: 1px;
 }
