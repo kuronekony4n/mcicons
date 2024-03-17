@@ -3,7 +3,7 @@ const animeList = document.getElementById("resultContainer");
 
 const searchanime = async (searchBox) => {
     try {
-        const res = await fetch("/icons/icons.json");
+        const res = await fetch("assets/file_list.json");
         if (!res.ok) {
             throw new Error(`Failed to fetch JSON: ${res.status} - ${res.statusText}`);
         }
@@ -31,7 +31,7 @@ const outputHtml = (fits) => {
                 (icon) =>
                     `
                     <div class="inventory-item">
-                    <a href="/icons/${icon}" download><img src="icons/${icon}" title="${icon}"></a>
+                    <a href="https://raw.githubusercontent.com/kuronekony4n/mcicons/main/icons4/${icon}" download><img src="https://raw.githubusercontent.com/kuronekony4n/mcicons/main/icons4-thumb/${icon}" title="${icon}"></a>
                     </div>
                 `
             )
