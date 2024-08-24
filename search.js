@@ -31,7 +31,7 @@ const outputHtml = (fits) => {
                 (icon) =>
                     `
                     <div class="inventory-item">
-                    <a href="icons-1.21/${icon}" download target="_blank"><img src="icons-1.21-thumb/${icon}" title="${icon}"></a>
+                    <a href="https://raw.githubusercontent.com/kuronekony4n/mcicons/main/icons-1.21/${icon}" download target="_blank"><img src="https://raw.githubusercontent.com/kuronekony4n/mcicons/main/icons-1.21-thumb/${icon}" title="${icon}"></a>
                     </div>
                 `
             )
