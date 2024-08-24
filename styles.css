@@ -23,7 +23,6 @@ body {
 }
 
 .inventory-item {
-    image-rendering: pixelated;
     background-color: #8B8B8B;
     border: 12px solid #000;
     border-image-source: url('assets/itemBg.png');
