@@ -1,48 +1,75 @@
 const searchInput = document.getElementById("search");
 const iconList = document.getElementById("resultContainer");
+const mainResult = document.getElementById("mainResult");
 
-const searchicons = async (searchBox) => {
+mainResult.style.display = "none"; 
+
+let iconData = null; 
+
+const fetchIconData = async () => {
     try {
-        const res = await fetch("assets/file_list-1.21.json");
+        const res = await fetch("assets/icon_list.json");
         if (!res.ok) {
             throw new Error(`Failed to fetch JSON: ${res.status} - ${res.statusText}`);
         }
-        const icondata = await res.json();
-
-        let fits = icondata.icons.filter((icon) => {
-            const regex = new RegExp(searchBox, "gi"); // Removed the "^" to match anywhere in the string
-            return icon.match(regex);
-        });
-
-        if (searchBox.length === 0) {
-            fits = [];
-        }
-
-        outputHtml(fits);
+        iconData = await res.json(); 
     } catch (error) {
         console.error(error);
     }
 };
 
-const outputHtml = (fits) => {
+const searchicons = (searchBox) => {
+    if (!iconData) return; 
+
+    const { thumbnail, url } = iconData.urls;
+
+    let fits = iconData.icons.filter((icon) => {
+        const regex = new RegExp(searchBox, "gi");
+        return icon.match(regex);
+    });
+
+    if (searchBox.length === 0) {
+        fits = [];
+        iconList.innerHTML = "";
+        mainResult.style.display = "none"; 
+    } else {
+        mainResult.style.display = "block"; 
+    }
+
+    outputHtml(fits, thumbnail, url);
+};
+
+const outputHtml = (fits, thumbnailUrl, fullUrl) => {
     if (fits.length > 0) {
         const iconFits = fits
-            .map(
-                (icon) =>
-                    `
-                    <div class="inventory-item">
-                    <a href="https://raw.githubusercontent.com/kuronekony4n/mcicons/main/icons-1.21/${icon}" download target="_blank"><img src="https://raw.githubusercontent.com/kuronekony4n/mcicons/main/icons-1.21-thumb/${icon}" title="${icon}"></a>
+            .map((icon) => {
+                const iconName = icon.replace('.png', '').replace(/_/g, ' ');
+                const iconNameArray = iconName.split(' ');
+                let formattedText = '';
+                
+                iconNameArray.forEach((word, i) => {
+                    formattedText += word + ' ';
+                    if ((i + 1) % 2 === 0) {
+                        formattedText += '<br>';
+                    }
+                });
+
+                formattedText = formattedText.trim();
+
+                return `
+                    <div class="inventory-item tooltip">
+                        <a href="${fullUrl}${icon}" download target="_blank">
+                            <img src="${thumbnailUrl}${icon}">
+                        </a>
+                        <span class="tooltiptext">${formattedText}</span>
                     </div>
-                `
-            )
+                `;
+            })
             .join("");
         iconList.innerHTML = iconFits;
     }
 };
 
-searchInput.addEventListener("input", () => searchicons(search.value));
+searchInput.addEventListener("input", () => searchicons(searchInput.value));
 
-// Load all icons on page load
-window.addEventListener("load", () => {
-    searchicons("");
-});
+window.addEventListener("load", fetchIconData);

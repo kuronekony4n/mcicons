@@ -1,4 +1,9 @@
 {
+    "urls": {
+        "help": "Add the icon's filename at the end of the URLs.",
+        "thumbnail": "https://raw.githubusercontent.com/kuronekony4n/mcicons/main/icons-1.21-thumb/",
+        "url": "https://raw.githubusercontent.com/kuronekony4n/mcicons/main/icons-1.21/"
+    },
     "icons": [
         "acacia_boat.png",
         "acacia_button.png",
