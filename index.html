@@ -14,25 +14,29 @@
 </head>
 
 <body>
-    <div class="credit">
-        <img src="assets\icons.png" width="200px">
-        by <a href="https://discordapp.com/users/482354439232159775">0willy</a>
-    </div>
+    <div class="container">
+        <div class="credit">
+            <img src="assets\icons.png" width="320px">
+        </div>
 
-    <hr>
-    <p>1689 Icons (1024px) from Minecraft Java Edition v1.21.
-        <br>Hover to see item's name. Click to save.
-    </p>
-    <input class="textInput imgRender" id="search" placeholder="Search Item" type="text">
-    <div class="crafting-compact imgRender" id="mainResult">
-        <div class="crafting-section" id="resultContainer"></div>
-    </div>
+        <div class="box3">
+            <span id="iconCount">0</span> High Resolution Icons from Minecraft Java v1.21
+        </div>
+        <div class="input-group">
+            <input class="textInput imgRender" id="search" placeholder="Search Icons or Try !show" type="text"
+                autocomplete="off">
+            <select id="iconType"> </select>
+        </div>
+        <div class="crafting-compact imgRender" id="mainResult">
+            <div class="crafting-section" id="resultContainer"></div>
+        </div>
 
-    <p>
-        <a href="https://www.patreon.com/posts/all-minecraft-1-116241434" target="_blank">Download All as ZIP</a> - 
-        <a href="https://patreon.com/0willy" target="_blank">Patreon</a> - 
-        <a href="/assets/icon_list.json" target="_blank">API</a>
-    </p>
+        <p>
+            by <a href="https://discordapp.com/users/482354439232159775">0willy</a> -
+            <a href="https://patreon.com/0willy" target="_blank">Support me on Patreon</a> -
+            <a href="/assets/data.json" target="_blank">API</a>
+        </p>
+    </div>
 
     <script src="search.js"></script>
 </body>
